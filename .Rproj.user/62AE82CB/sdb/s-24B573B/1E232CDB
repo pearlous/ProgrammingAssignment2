@@ -1,0 +1,17 @@
+{
+    "contents" : "makeVector <- function(x = numeric()) {\n        m <- NULL\n        print(environment())\n        evn <- environment()\n        print(parent.env(evn))\n        set <- function(y) {\n                x <<- y\n                m <<- NULL\n        }\n        get <- function() x\n        setmean <- function(mean) m <<- mean\n        getmean <- function() m\n        getevn<- function() environment()\n        list(set = set, get = get,\n             setmean = setmean,\n             getmean = getmean,\n             getevn = getevn)\n}",
+    "created" : 1422224174465.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "318941814",
+    "id" : "1E232CDB",
+    "lastKnownWriteTime" : 2314978263457341472,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
