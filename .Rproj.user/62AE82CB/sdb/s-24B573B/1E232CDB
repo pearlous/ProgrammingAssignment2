@@ -1,10 +1,10 @@
 {
-    "contents" : "makeVector <- function(x = numeric()) {\n        m <- NULL\n        print(environment())\n        evn <- environment()\n        print(parent.env(evn))\n        set <- function(y) {\n                x <<- y\n                m <<- NULL\n        }\n        get <- function() x\n        setmean <- function(mean) m <<- mean\n        getmean <- function() m\n        getevn<- function() environment()\n        list(set = set, get = get,\n             setmean = setmean,\n             getmean = getmean,\n             getevn = getevn)\n}",
+    "contents" : "## Programming Assignment 2 - Coursera R Programming Class\n# Matrix inversion is usually a costly computation and their\n# is some benefit to caching the inverse of a matrix rather\n# than compute it repeatedly.\n\n## The makeCacheMatrix function creates a special matrix\n## object that can cache its inverse.\n\nmakeCacheMatrix <- function(x = matrix()) {\n        \n        m <- NULL\n        \n        set <- function(y) {\n                x <<- y\n                m <<- NULL\n        }\n        \n        get <- function() x\n        \n        setinv <- function(solve) m <<- solve\n        \n        getinv <- function() m\n        \n        #list(set = set, get = get,\n        setinv = setinv,\n        getinv = getinv)\n}\n\n\n## The cacheSolve function computes the invers of the special\n## matrix returned by makeCacheMatrix.\n\ncacheSolve <- function(x, ...) {\n        ## Return a matrix that is the inverse of 'x'\n        \n        m <- x$getinv()\n        \n        if(!is.null(m)) {\n                message(\"getting cached data\")\n                return(m)\n        }\n        \n        data <- x$get()\n        \n        m <- solve(data)\n        \n        x$setinv(m)\n        \n        m\n}\n",
     "created" : 1422224174465.000,
     "dirty" : true,
     "encoding" : "",
     "folds" : "",
-    "hash" : "318941814",
+    "hash" : "1429298693",
     "id" : "1E232CDB",
     "lastKnownWriteTime" : 2314978263457341472,
     "path" : null,

@@ -1,0 +1,16 @@
+{
+    "contents" : "## Programming Assignment 2 - Coursera R Programming Class\n# Matrix inversion is usually a costly computation and their\n# is some benefit to caching the inverse of a matrix rather\n# than compute it repeatedly.\n\n## The makeCacheMatrix function creates a special matrix\n## object that can cache its inverse.\n\nmakeCacheMatrix <- function(x = matrix()) {\n        \n        m <- NULL\n        \n        set <- function(y) {\n                x <<- y\n                m <<- NULL\n        }\n        \n        get <- function() x\n        \n        setinv <- function(solve) m <<- solve\n        \n        getinv <- function() m\n        \n        #list(set = set, get = get,\n             setinv = setinv,\n             getinv = getinv)\n}\n\n\n## The cacheSolve function computes the invers of the special\n## matrix returned by makeCacheMatrix.\n\ncacheSolve <- function(x, ...) {\n        ## Return a matrix that is the inverse of 'x'\n        \n        m <- x$getinv()\n        \n        if(!is.null(m)) {\n                message(\"getting cached data\")\n                return(m)\n        }\n        \n        data <- x$get()\n        \n        m <- solve(data)\n        \n        x$setinv(m)\n        \n        m\n}\n",
+    "created" : 1422229976058.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3605079870",
+    "id" : "8BFDCAD0",
+    "lastKnownWriteTime" : 1422229601,
+    "path" : "~/Big Data/Coursera/R/Programming Assignments/Assigment 2/ProgrammingAssignment2/cachematrix.R",
+    "project_path" : "cachematrix.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
